@@ -4,6 +4,7 @@ import CustomizePage from "./CustomizePage";
 import QuizPage from "./QuizPage/QuizPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import PageNotFound from "./PageNotFound";
+import ReportPage from "./ReportPage/ReportPage";
 
 const initialState = {
   subject: 0,
@@ -118,6 +119,7 @@ function App() {
             }
           ></Route>
 
+          <Route path="Report" element={<ReportPage />}></Route>
           <Route path="*" element={<PageNotFound />}></Route>
         </Routes>
       </BrowserRouter>

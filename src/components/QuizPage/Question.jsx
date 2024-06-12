@@ -37,10 +37,9 @@ function Question({
     window.speechSynthesis.speak(speech);
   }
 
+  // TODO: useEffect dependency eslint
   useEffect(
     function () {
-      console.log("activeQues", activeQues);
-      console.log("choosedOptionsArr", choosedOptionsArr[activeQues]);
       if (
         choosedOptionsArr[activeQues] &&
         choosedOptionsArr[activeQues].optID !== -1

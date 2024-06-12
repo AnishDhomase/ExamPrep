@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import Button from "../Utility/Button";
 import PropTypes from "prop-types";
 
@@ -13,6 +14,7 @@ Summary.propTypes = {
   BookmarkedArr: PropTypes.array,
   activeQues: PropTypes.number,
   setActiveQues: PropTypes.func,
+  testTime: PropTypes.number,
 };
 
 function Summary({
@@ -20,13 +22,22 @@ function Summary({
   BookmarkedArr,
   activeQues,
   setActiveQues,
+  testTime,
 }) {
   // const numOfQues = choosedOptionsArr.length();
+  const minLeft = Math.floor(testTime / 60);
+  const secLeft = testTime % 60;
   return (
     <div className="summary">
       <div className="submit">
-        <Button>Submit Test</Button>
-        <span>05:00</span>
+        <NavLink to="/Report">
+          <Button>Submit Test</Button>
+        </NavLink>
+        <span>
+          {minLeft < 10 && "0"}
+          {minLeft} : {secLeft < 10 && "0"}
+          {secLeft}
+        </span>
       </div>
       <div className="quesWindow">
         {choosedOptionsArr?.map((elem, index) => (
