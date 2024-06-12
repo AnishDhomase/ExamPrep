@@ -31,7 +31,7 @@ function Summary({
     <div className="summary">
       <div className="submit">
         <NavLink to="/Report">
-          <Button>Submit Test</Button>
+          <Button type="filled">Submit Test</Button>
         </NavLink>
         <span>
           {minLeft < 10 && "0"}

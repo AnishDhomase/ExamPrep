@@ -96,7 +96,10 @@ function Question({
 
       <div className="quesBtnBox">
         {activeQues !== 0 && (
-          <Button onBtnClick={() => setActiveQues(activeQues - 1)}>
+          <Button
+            type="filled"
+            onBtnClick={() => setActiveQues(activeQues - 1)}
+          >
             <i className="fa-solid fa-chevron-left"></i>
           </Button>
         )}
@@ -112,7 +115,10 @@ function Question({
           ></i>
         </Button>
         {activeQues !== totalQues - 1 && (
-          <Button onBtnClick={() => setActiveQues(activeQues + 1)}>
+          <Button
+            type="filled"
+            onBtnClick={() => setActiveQues(activeQues + 1)}
+          >
             <i className="fa-solid fa-chevron-right"></i>
           </Button>
         )}
