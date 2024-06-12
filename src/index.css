@@ -1,0 +1,442 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box !important;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+body {
+  font-family: sans-serif;
+  width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+#root {
+  width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+.app {
+  width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ========== Home ============ */
+.Box {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.225);
+}
+.BoxInnner {
+  background-color: rgb(239, 239, 233);
+  width: 50%;
+  min-width: 530px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  border-radius: 20px;
+  font-size: 18px;
+  gap: 30px;
+  align-items: center;
+}
+.BoxInnner h1 {
+  color: rgb(47, 64, 215);
+  opacity: 0.8;
+  margin-bottom: 20px;
+}
+.home .btn {
+  width: 100%;
+  margin-top: 60px;
+}
+.BoxInnner p {
+  font-size: 12px;
+  margin-top: 20px;
+}
+@media screen and (max-width: 560px) {
+  .BoxInnner {
+    width: 90%;
+    padding: 50px 30px;
+    min-width: 200px;
+  }
+  .BoxInnner h1 {
+    font-size: 30px;
+  }
+}
+@media screen and (max-width: 460px) {
+  .BoxInnner h1 {
+    display: flex;
+    flex-direction: column;
+  }
+  .BoxInnner h1 span {
+    text-align: center;
+  }
+  .BoxInnner {
+    width: 100%;
+    min-height: 100vh;
+    padding: 10px;
+    justify-content: center;
+    border-radius: 0;
+  }
+}
+/* ========== Home ============ */
+
+/* ========== Customize ======== */
+.customQuiz .btn {
+  min-width: 140px;
+}
+.btnBox {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  margin-top: 60px;
+}
+.customQuiz .selectBox select {
+  min-width: 120px;
+}
+/* ========== Customize ======== */
+
+/* ========== Quiz ============= */
+/* ----------Header */
+.quiz {
+  background-color: rgb(243, 239, 239);
+  padding: 30px;
+}
+.quiz .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 35px;
+  background-color: rgb(216, 208, 216);
+  border-radius: 50px;
+  font-size: 18px;
+}
+.quiz .header .detail {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+.quiz .header .detail.active {
+  display: block;
+}
+.quiz .header .detail span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.quiz .header .detail i {
+  font-size: 10px;
+  margin-right: 5px;
+}
+.quiz .header .user .userName {
+  text-transform: capitalize;
+}
+.quiz .header .user {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.quiz .header .user i {
+  padding: 10px 12px;
+  background-color: rgb(148, 138, 138);
+  border-radius: 50px;
+  color: white;
+}
+.quiz .header .toggler {
+  padding: 10px 12px;
+  background-color: rgb(148, 138, 138);
+  border-radius: 50px;
+  display: none;
+  color: white;
+}
+@media screen and (max-width: 750px) {
+  .quiz .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 15px;
+    position: relative;
+  }
+  .quiz .header .detail {
+    background-color: rgb(148, 138, 138);
+    padding: 30px;
+    border-radius: 40px;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    top: 60px;
+    display: none;
+  }
+  .quiz .header .detail span:nth-child(2) {
+    margin: 15px 0;
+  }
+  .quiz .header .toggler {
+    display: block;
+  }
+}
+@media screen and (max-width: 400px) {
+  .quiz {
+    background-color: rgb(243, 239, 239);
+    padding: 10px;
+  }
+  .quiz .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 15px;
+    position: relative;
+    /* border-radius: 0; */
+  }
+}
+/* ----------Header */
+/* ----------quesBox */
+.quiz .quesBox {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+li {
+  list-style-type: none;
+}
+.quiz .quesBox .question {
+  width: 50%;
+  background-color: gray;
+  border-radius: 50px;
+  padding: 35px 35px;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  position: relative;
+}
+.quiz .quesBox .question .quesStatus {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.quiz .quesBox .question .quesStatus h3 {
+  font-size: 18px;
+}
+.quiz .quesBox .question .quesStatus .progressBar {
+  width: 100%;
+  background-color: rgb(0, 0, 0);
+  height: 8px;
+  display: flex;
+  align-items: center;
+  padding: 3px 3px;
+  border-radius: 50px;
+}
+.quiz .quesBox .question .quesStatus .progressBar .val {
+  height: 3px;
+  background-color: rgb(203, 195, 195);
+  border-radius: 50px;
+}
+.quiz .quesBox .question .quesDesc {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+}
+.quiz .quesBox .question .quesDesc i {
+  color: white;
+  padding: 8px 6px;
+  background-color: rgb(190, 184, 184);
+  border-radius: 50px;
+  cursor: pointer;
+}
+.quiz .quesBox .question .quesDesc i:hover {
+  opacity: 0.85;
+}
+.quiz .quesBox .question .options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.quiz .quesBox .question .options li {
+  background-color: rgba(234, 227, 227, 0.312);
+  padding: 15px 25px;
+  border-radius: 50px;
+  cursor: pointer;
+  color: white;
+}
+.quiz .quesBox .question .options li:hover {
+  scale: 1.013;
+}
+.quiz .quesBox .question .options li.selected {
+  background-color: rgba(2, 255, 2, 0.343);
+}
+.quiz .quesBox .question .quesBtnBox {
+  width: calc(100% - 70px);
+  position: absolute;
+  bottom: 35px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+/* ----------quesBox */
+/* ----------summaryBox */
+.quiz .quesBox .summary {
+  min-height: 97vh;
+  position: relative;
+  width: 50%;
+  background-color: gray;
+  border-radius: 50px;
+  padding: 35px 35px;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.quiz .quesBox .summary .submit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.quiz .quesBox .summary .quesWindow {
+  margin: 0 auto;
+  width: 320px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  border: 1px solid rgb(188, 184, 184);
+  border-radius: 30px;
+  padding: 15px;
+}
+.quiz .quesBox .summary .quesStatus {
+  background-color: rgb(178, 170, 170);
+  border-radius: 50px;
+  padding: 10px;
+  color: white;
+  box-sizing: border-box !important;
+}
+.quiz .quesBox .summary .quesStatus.marked {
+  background-color: rgb(100, 60, 170) !important;
+}
+.quiz .quesBox .summary .quesStatus.answered {
+  background-color: rgb(57, 208, 77);
+}
+.quiz .quesBox .summary .quesStatus.notAnswered {
+  background-color: rgb(207, 65, 65);
+}
+.quiz .quesBox .summary .quesStatus.active {
+  border: 1px solid white;
+}
+.quiz .quesBox .summary .quesWindow .quesStatus:hover {
+  scale: 1.1;
+  cursor: pointer;
+}
+.quiz .quesBox .summary .quesStatusNote {
+  width: 450px;
+  margin: 0 auto;
+  border: 1px solid rgb(188, 184, 184);
+  border-radius: 30px;
+  padding: 15px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  position: absolute;
+  bottom: 35px;
+  left: 0;
+  right: 0;
+}
+.quiz .quesBox .summary .quesStatusNote .quesStatusItem {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-width: 200px;
+}
+/* ----------summaryBox */
+
+/* ========== Quiz ============= */
+
+/* =========== Utility ========= */
+.btn {
+  padding: 15px 25px;
+  outline: none;
+  border: none;
+  background-color: rgb(252, 244, 244);
+  border-radius: 30px;
+  font-size: 18px;
+  border: 2px solid rgb(47, 64, 215);
+  color: rgb(47, 64, 215);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn.unfilled {
+  background-color: rgb(252, 244, 244);
+  border: 2px solid rgb(47, 64, 215);
+  color: rgb(47, 64, 215);
+}
+.btn.unfilled:hover {
+  background-color: rgb(47, 64, 215);
+  border: 2px solid rgb(252, 244, 244);
+  color: rgb(252, 244, 244);
+}
+.btn.filled {
+  background-color: rgb(47, 64, 215);
+  border: 2px solid rgb(252, 244, 244);
+  color: rgb(252, 244, 244);
+}
+.btn.filled:hover {
+  opacity: 0.85;
+}
+input {
+  padding: 15px 25px;
+  border: none;
+  border-radius: 30px;
+  text-transform: capitalize;
+  outline: none;
+  font-size: 18px;
+  width: 100%;
+  color: rgb(47, 64, 215);
+}
+input::placeholder {
+  color: rgb(47, 64, 215);
+  opacity: 1; /* Firefox */
+}
+.selectBox {
+  background-color: white;
+  /* padding: 15px 25px; */
+  border: none;
+  border-radius: 30px;
+  text-transform: capitalize;
+  outline: none;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 25px;
+  width: 100%;
+  color: rgb(47, 64, 215);
+}
+.selectBox select {
+  outline: none;
+  border: none;
+  background-color: rgb(252, 244, 244);
+  padding: 15px;
+  border-radius: 30px;
+  font-size: 18px;
+  color: rgb(47, 64, 215);
+}
+.selectBox select option {
+  padding: 10px;
+  color: rgb(47, 64, 215);
+}
+/* =========== Utility ========= */
