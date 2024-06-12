@@ -155,7 +155,7 @@ body {
   display: none;
   color: white;
 }
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 774px) {
   .quiz .header {
     display: flex;
     justify-content: space-between;
@@ -164,7 +164,7 @@ body {
     position: relative;
   }
   .quiz .header .detail {
-    background-color: rgb(148, 138, 138);
+    background-color: rgb(228, 215, 215);
     padding: 30px;
     border-radius: 40px;
 
@@ -175,12 +175,30 @@ body {
     position: absolute;
     top: 60px;
     display: none;
+    z-index: 100;
   }
   .quiz .header .detail span:nth-child(2) {
     margin: 15px 0;
   }
   .quiz .header .toggler {
     display: block;
+  }
+  .quiz .header .user {
+    display: none;
+  }
+  .quiz .quesBox .summary .submit {
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    font-size: 15px;
+    background-color: rgba(192, 193, 222, 0.682);
+    padding: 13px;
+    border-radius: 50px 0 0 50px;
+  }
+  .quiz .quesBox .summary .submit .btn {
+    padding: 10px 15px;
+    margin-right: 10px;
   }
 }
 @media screen and (max-width: 400px) {
@@ -210,6 +228,7 @@ li {
 }
 .quiz .quesBox .question {
   width: 50%;
+  flex-grow: 1;
   background-color: gray;
   border-radius: 50px;
   padding: 35px 35px;
@@ -294,6 +313,7 @@ li {
   min-height: 97vh;
   position: relative;
   width: 50%;
+  max-width: 390px;
   background-color: gray;
   border-radius: 50px;
   padding: 35px 35px;
@@ -306,6 +326,13 @@ li {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.quiz .quesBox .summary .submit span {
+  font-weight: 700;
+  background-color: white;
+  padding: 10px;
+  border-radius: 50px;
+  color: rgb(249, 60, 60);
 }
 .quiz .quesBox .summary .quesWindow {
   margin: 0 auto;
@@ -342,7 +369,10 @@ li {
   cursor: pointer;
 }
 .quiz .quesBox .summary .quesStatusNote {
-  width: 450px;
+  /* width: 450px; */
+  /* width: 387px; */
+  /* width: 268px; */
+  width: calc(100% - 70px);
   margin: 0 auto;
   border: 1px solid rgb(188, 184, 184);
   border-radius: 30px;
@@ -357,11 +387,135 @@ li {
 }
 .quiz .quesBox .summary .quesStatusNote .quesStatusItem {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 15px;
-  min-width: 200px;
+  /* min-width: 200px; */
+  min-width: 135px;
 }
 /* ----------summaryBox */
+@media screen and (max-height: 675px) {
+  .quiz .quesBox .summary {
+    height: 100vh;
+  }
+}
+@media screen and (max-height: 650px) {
+  .quiz .quesBox .summary {
+    height: 105vh;
+  }
+}
+@media screen and (max-height: 620px) {
+  .quiz .quesBox .summary {
+    height: 110vh;
+  }
+}
+@media screen and (max-height: 580px) {
+  .quiz .quesBox .summary {
+    height: 115vh;
+  }
+}
+@media screen and (max-width: 890px) {
+  .quiz {
+    padding: 0;
+  }
+  .quiz .header {
+    border-radius: 0;
+  }
+  .quiz .quesBox {
+    margin-top: 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 0;
+  }
+  .quiz .quesBox .summary {
+    border-radius: 0;
+  }
+  .quiz .quesBox .question {
+    border-radius: 0;
+    border-right: 2px solid black;
+  }
+}
+@media screen and (max-width: 774px) {
+  .quiz {
+    padding: 0;
+  }
+  .quiz .header {
+    border-radius: 0;
+  }
+  .quiz .quesBox {
+    flex-direction: column;
+  }
+  .quiz .quesBox .summary {
+    width: 100vw !important;
+    width: 100%;
+    max-width: none;
+    height: auto !important;
+    min-width: none !important;
+  }
+  .quiz .quesBox .question {
+    width: 100vw;
+    width: 100%;
+    min-height: 90vh;
+    border-right: 0px solid black;
+  }
+  .quiz .quesBox .summary .quesStatusNote {
+    width: 320px;
+    margin: 0 auto;
+    border: 1px solid rgb(188, 184, 184);
+    border-radius: 30px;
+    padding: 15px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    position: absolute;
+    bottom: 35px;
+    left: 0;
+    right: 0;
+  }
+  .quiz .quesBox .summary .quesStatusNote .quesStatusItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    min-width: 135px;
+  }
+  .quiz .quesBox .summary .quesStatusNote {
+    position: relative;
+    margin-top: 20px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .quiz .quesBox .question {
+    min-height: 92vh;
+    padding: 35px 15px;
+  }
+  .quiz .quesBox .summary {
+    padding: 35px 15px;
+  }
+  .quiz .quesBox .question .quesBtnBox {
+    width: calc(100% - 30px);
+  }
+}
+@media screen and (max-width: 350px) {
+  .quiz .quesBox .summary .quesWindow {
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  .quiz .quesBox .summary .quesStatusNote {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .quiz .quesBox .summary .quesStatusNote .quesStatusItem {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    min-width: 105px;
+  }
+}
 
 /* ========== Quiz ============= */
 
