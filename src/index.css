@@ -2,7 +2,6 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box !important;
-  color: rgb(48, 48, 89);
 }
 ::-webkit-scrollbar {
   display: none;
@@ -12,6 +11,7 @@ body {
   width: 100vw;
   min-height: 100vh;
   overflow-x: hidden;
+  color: rgb(48, 81, 89);
 }
 #root {
   width: 100vw;
@@ -47,7 +47,7 @@ body {
   align-items: center;
 }
 .BoxInnner h1 {
-  color: rgb(47, 64, 215);
+  color: rgb(47, 64, 215) !important;
   opacity: 0.8;
   margin-bottom: 20px;
 }
@@ -117,6 +117,7 @@ body {
   background-color: #fefefe;
   border-radius: 50px;
   font-size: 18px;
+  position: relative;
 }
 .quiz .header .detail {
   display: flex;
@@ -125,8 +126,9 @@ body {
 }
 .quiz .header .detail.active {
   display: block;
+  display: flex;
 }
-.quiz .header .detail span {
+.header .detail span {
   display: flex;
   align-items: center;
   gap: 5px;
@@ -165,7 +167,8 @@ body {
     position: relative;
   }
   .quiz .header .detail {
-    background-color: rgb(228, 215, 215);
+    background-color: #948a8a;
+    color: white;
     padding: 30px;
     border-radius: 40px;
 
@@ -177,6 +180,11 @@ body {
     top: 60px;
     display: none;
     z-index: 100;
+
+    gap: 0px;
+  }
+  .quiz .header .detail span {
+    width: 100%;
   }
   .quiz .header .detail span:nth-child(2) {
     margin: 15px 0;
@@ -196,6 +204,8 @@ body {
     background-color: rgba(192, 193, 222, 0.682);
     padding: 13px;
     border-radius: 50px 0 0 50px;
+
+    z-index: 1111;
   }
   .quiz .quesBox .summary .submit .btn {
     padding: 10px 15px;
@@ -536,6 +546,160 @@ li {
 }
 
 /* ========== Quiz ============= */
+
+/* ========== Report ============= */
+.report {
+  background-color: #edeff1;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  justify-content: center;
+}
+.report .reportNav {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  padding: 10px;
+  border-radius: 50px;
+}
+.report .title {
+  text-align: center;
+}
+.report .chart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+  border-radius: 50px;
+  padding: 30px;
+}
+.report .chart .chartgraph {
+  min-height: 50vh;
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+}
+.report .chart .btn {
+  max-width: 170px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+.scoreCard {
+  background-color: white;
+  padding: 30px;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  font-size: 14px;
+}
+.scoreCard .acc {
+  margin: 0 auto;
+  font-weight: 100;
+}
+.scoreInner {
+  width: 100%;
+  background-color: white;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 300px;
+  margin: 0 auto;
+}
+.scoreInner h2 {
+  display: flex;
+  justify-content: space-between;
+}
+.scoreInner h2 span:nth-child(2) {
+  color: blue;
+}
+.tableBox .sort {
+  background-color: white;
+  padding: 15px 15px;
+  border-radius: 50px;
+}
+.table {
+  background-color: white;
+  margin-top: 20px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 50px;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.table .row.head {
+  font-weight: 700;
+  background-color: transparent;
+}
+.table .row {
+  background-color: #d7cdcd;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 50px;
+  padding: 10px;
+  align-items: center;
+  overflow: hidden;
+}
+.table .row span {
+  display: block;
+  overflow: hidden;
+  max-height: 50px;
+}
+.table .row span:nth-child(1) {
+  min-width: 30px;
+  text-align: center;
+}
+.table .row span:nth-child(2) {
+  min-width: 30px;
+  text-align: center;
+}
+.table .row span:nth-child(3) {
+  width: 120px;
+  text-align: center;
+}
+.table .row span:nth-child(4) {
+  width: auto;
+  width: 120px;
+  text-align: center;
+}
+.table .row.correctt {
+  background-color: rgb(253, 60, 60);
+}
+.table .row.inCorrectt {
+  background-color: rgb(57, 208, 77);
+}
+
+@media screen and (max-width: 450px) {
+  .report {
+    padding: 15px 5px;
+    gap: 30px;
+  }
+  .report .chart {
+    padding: 25px 10px;
+  }
+  .table {
+    padding: 30px 10px;
+    gap: 10px;
+  }
+}
+@media screen and (max-width: 550px) {
+  .table {
+    padding: 5px;
+    border-radius: 20px;
+  }
+  .table .row {
+    padding: 5px;
+    font-size: 15px;
+  }
+  .tableBox .sort {
+    padding: 5px 5px;
+  }
+}
+
+/* ========== Report ============= */
 
 /* =========== Utility ========= */
 .btn {

@@ -119,7 +119,19 @@ function App() {
             }
           ></Route>
 
-          <Route path="Report" element={<ReportPage />}></Route>
+          <Route
+            path="Report"
+            element={
+              <ReportPage
+                choosedOptionsArr={choosedOptionsArr}
+                subject={subject}
+                candidateName={candidateName}
+                numOfQuestions={numOfQuestions}
+                difficultyLevel={difficultyLevel}
+                subjects={subjects}
+              />
+            }
+          ></Route>
           <Route path="*" element={<PageNotFound />}></Route>
         </Routes>
       </BrowserRouter>

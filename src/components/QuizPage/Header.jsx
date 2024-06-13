@@ -7,9 +7,10 @@ Header.propTypes = {
   subjects: PropTypes.array,
   numQues: PropTypes.number,
   lvl: PropTypes.string,
+  children: PropTypes.any,
 };
 
-function Header({ subjects, name, subject, numQues, lvl }) {
+function Header({ subjects, name, subject, numQues, lvl, children }) {
   const Toggler = useRef(null);
   const Details = useRef(null);
   return (
@@ -29,6 +30,7 @@ function Header({ subjects, name, subject, numQues, lvl }) {
         </span>
       </div>
 
+      {children}
       <div
         className="toggler"
         ref={Toggler}
