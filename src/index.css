@@ -575,9 +575,9 @@ li {
   padding: 30px;
 }
 .report .chart .chartgraph {
-  min-height: 50vh;
+  min-height: 350px;
   width: 100%;
-  max-width: 500px;
+  max-width: 400px;
   margin: auto;
 }
 .report .chart .btn {
@@ -657,12 +657,12 @@ li {
   text-align: center;
 }
 .table .row span:nth-child(3) {
-  width: 120px;
+  min-width: 120px;
   text-align: center;
 }
 .table .row span:nth-child(4) {
   width: auto;
-  width: 120px;
+  min-width: 120px;
   text-align: center;
 }
 .table .row.correctt {
@@ -696,6 +696,27 @@ li {
   }
   .tableBox .sort {
     padding: 5px 5px;
+  }
+}
+@media screen and (min-width: 700px) {
+  .table .row span:nth-child(1) {
+    min-width: 70px;
+    text-align: center;
+  }
+  .table .row span:nth-child(2) {
+    min-width: 70px;
+    text-align: center;
+  }
+  .table .row span:nth-child(3) {
+    width: 220px;
+    text-align: center;
+    flex-grow: 1;
+  }
+  .table .row span:nth-child(4) {
+    width: auto;
+    width: 220px;
+    text-align: center;
+    flex-grow: 1;
   }
 }
 
