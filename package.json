@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "server": "json-server --watch data/quizData.json --port 8000"
+    "server": "json-server --watch data/quizData.json"
   },
   "dependencies": {
     "chart.js": "^4.4.3",

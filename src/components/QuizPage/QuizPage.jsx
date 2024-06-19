@@ -4,6 +4,8 @@ import Question from "./Question";
 import Summary from "./Summary";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { quizData } from "../../../data/quizData";
+
 QuizPage.propTypes = {
   dispatch: PropTypes.func,
   subject: PropTypes.number,
@@ -15,7 +17,7 @@ QuizPage.propTypes = {
   BookmarkedArr: PropTypes.array,
 };
 
-const BASE_URL = "http://localhost:8000";
+// const BASE_URL = "http://localhost:8000";
 
 function QuizPage({
   difficultyLevel,
@@ -38,20 +40,26 @@ function QuizPage({
 
   useEffect(
     function () {
-      async function _fetchdata() {
-        try {
-          const res = await fetch(`${BASE_URL}/quiz`);
-          const data = await res.json();
-          if (subject === 0) setQuesData(data.science);
-          else if (subject === 1) setQuesData(data.geography);
-          else if (subject === 2) setQuesData(data.history);
-          else if (subject === 3) setQuesData(data.reactjs);
-          else setQuesData(data.javascript);
-        } catch (er) {
-          console.error(er.message);
-        }
-      }
-      _fetchdata();
+      // async function _fetchdata() {
+      //   try {
+      //     const res = await fetch(`${BASE_URL}/quiz`);
+      //     const data = await res.json();
+      //     if (subject === 0) setQuesData(data.science);
+      //     else if (subject === 1) setQuesData(data.geography);
+      //     else if (subject === 2) setQuesData(data.history);
+      //     else if (subject === 3) setQuesData(data.reactjs);
+      //     else setQuesData(data.javascript);
+      //   } catch (er) {
+      //     console.error(er.message);
+      //   }
+      // }
+      // _fetchdata();
+
+      if (subject === 0) setQuesData(quizData.quiz.science);
+      else if (subject === 1) setQuesData(quizData.quiz.geography);
+      else if (subject === 2) setQuesData(quizData.quiz.history);
+      else if (subject === 3) setQuesData(quizData.quiz.reactjs);
+      else setQuesData(quizData.quiz.javascript);
     },
     [subject]
   );

@@ -4,8 +4,9 @@ import { defaults } from "chart.js/auto";
 import Button from "../Utility/Button";
 import { NavLink } from "react-router-dom";
 import ChartComponent from "./ChartComponent";
+import { quizData } from "../../../data/quizData";
 
-const BASE_URL = "http://localhost:8000";
+// const BASE_URL = "http://localhost:8000";
 
 const SortByOpts = ["All", "Correct", "Incorrect", "Skipped"];
 
@@ -35,21 +36,27 @@ function ReportPage({
 
   useEffect(
     function () {
-      async function _fetchdata() {
-        try {
-          const res = await fetch(`${BASE_URL}/quiz`);
-          const data = await res.json();
-          if (subject === 0) setQuesData(data.science);
-          else if (subject === 1) setQuesData(data.geography);
-          else if (subject === 2) setQuesData(data.history);
-          else if (subject === 3) setQuesData(data.reactjs);
-          else setQuesData(data.javascript);
-        } catch (er) {
-          console.error(er.message);
-        }
-      }
-      _fetchdata();
+      // async function _fetchdata() {
+      //   try {
+      //     const res = await fetch(`${BASE_URL}/quiz`);
+      //     const data = await res.json();
+      //     if (subject === 0) setQuesData(data.science);
+      //     else if (subject === 1) setQuesData(data.geography);
+      //     else if (subject === 2) setQuesData(data.history);
+      //     else if (subject === 3) setQuesData(data.reactjs);
+      //     else setQuesData(data.javascript);
+      //   } catch (er) {
+      //     console.error(er.message);
+      //   }
+      // }
+      // _fetchdata();
+      if (subject === 0) setQuesData(quizData.quiz.science);
+      else if (subject === 1) setQuesData(quizData.quiz.geography);
+      else if (subject === 2) setQuesData(quizData.quiz.history);
+      else if (subject === 3) setQuesData(quizData.quiz.reactjs);
+      else setQuesData(quizData.quiz.javascript);
     },
+
     [subject]
   );
 
