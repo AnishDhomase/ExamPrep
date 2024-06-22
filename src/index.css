@@ -331,7 +331,6 @@ li {
 } */
 .quiz .quesBox .question .quesBtnBox .btn:nth-child(2):hover {
   color: white !important;
-  background-color: red;
 }
 /* ----------quesBox */
 /* ----------summaryBox */

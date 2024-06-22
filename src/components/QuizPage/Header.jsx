@@ -10,7 +10,7 @@ Header.propTypes = {
 };
 
 function Header({ subjects, name, subject, numQues, lvl }) {
-  console.log("⚡⚡Header Render");
+  // console.log("⚡⚡Header Render");
   const Toggler = useRef(null);
   const Details = useRef(null);
 

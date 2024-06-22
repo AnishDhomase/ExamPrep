@@ -24,7 +24,7 @@ function Question({
   choosedOptionsArr,
   BookmarkedArr,
 }) {
-  console.log("⚡⚡Question Render");
+  // console.log("⚡⚡Question Render");
 
   // TODO: useEffect dependency eslint
   // Choose Option

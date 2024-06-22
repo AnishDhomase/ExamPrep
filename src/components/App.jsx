@@ -60,7 +60,7 @@ function reducer(state, action) {
 }
 
 function App() {
-  console.log("⚡⚡⚡⚡App render");
+  // console.log("⚡⚡⚡⚡App render");
 
   const [
     {

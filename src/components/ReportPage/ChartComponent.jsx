@@ -18,7 +18,7 @@ export default function ChartComponent({
   skippedQues,
   setViewType,
 }) {
-  console.log("⚡⚡ChartComponent Render");
+  // console.log("⚡⚡ChartComponent Render");
   return (
     <div className="chart">
       <div className="chartgraph">

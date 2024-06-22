@@ -29,7 +29,7 @@ function Summary({
   numOfQuestions,
   difficultyLevel,
 }) {
-  console.log("⚡⚡Summary render");
+  // console.log("⚡⚡Summary render");
   return (
     <div className="summary">
       <div className="submit">

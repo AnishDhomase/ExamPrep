@@ -29,7 +29,7 @@ function QuizPage({
   choosedOptionsArr,
   BookmarkedArr,
 }) {
-  console.log("⚡⚡⚡QuizPage render");
+  // console.log("⚡⚡⚡QuizPage render");
 
   const [quesData, setQuesData] = useState([]);
   const [activeQues, setActiveQues] = useState(0);

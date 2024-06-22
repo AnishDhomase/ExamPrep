@@ -24,7 +24,7 @@ function CustomizePage({
   candidateName,
   subjects,
 }) {
-  console.log("⚡⚡⚡CustomizePage Render");
+  // console.log("⚡⚡⚡CustomizePage Render");
   return (
     <div className="Box">
       <div className="BoxInnner customQuiz">
@@ -75,7 +75,7 @@ function CustomizePage({
             <Button>Previous</Button>
           </NavLink>
           <NavLink to="/Quiz">
-            <Button type="filled">Start Quiz</Button>
+            <Button type="filled">Start Test</Button>
           </NavLink>
         </div>
 

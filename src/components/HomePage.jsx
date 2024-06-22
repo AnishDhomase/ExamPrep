@@ -21,7 +21,7 @@ function HomePage({
   numOfQuestions,
   difficultyLevel,
 }) {
-  console.log("⚡⚡⚡Homepage render");
+  // console.log("⚡⚡⚡Homepage render");
 
   return (
     <div className="Box">

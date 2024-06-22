@@ -32,7 +32,7 @@ function ReportPage({
   difficultyLevel,
   subjects,
 }) {
-  console.log("⚡⚡⚡Report page render");
+  // console.log("⚡⚡⚡Report page render");
 
   const [quesData, setQuesData] = useState([]);
   const [sortBy, setSortBy] = useState("Default");
@@ -106,28 +106,10 @@ function ReportPage({
     if (!copyOfEvlArr) return "";
     if (!copyOfEvlArr[i]) return "";
     if (copyOfEvlArr[i].choosed === "Skipped273") {
-      console.log(
-        i,
-        copyOfEvlArr[i].choosed,
-        copyOfEvlArr[i].correctAns,
-        "emptyStr"
-      );
       return "";
     } else if (copyOfEvlArr[i].choosed === copyOfEvlArr[i].correctAns) {
-      console.log(
-        i,
-        copyOfEvlArr[i].choosed,
-        copyOfEvlArr[i].correctAns,
-        "correct"
-      );
       return "inCorrectt";
     }
-    console.log(
-      i,
-      copyOfEvlArr[i].choosed,
-      copyOfEvlArr[i].correctAns,
-      "incorrect"
-    );
     return "correctt";
   }
 
@@ -158,9 +140,9 @@ function ReportPage({
         <NavLink to="/">
           <Button>New Test</Button>
         </NavLink>
-        <NavLink to="/Exit">
-          <Button type="filled">Exit</Button>
-        </NavLink>
+        {/* <Button type="filled" onBtnClick={closeTab}>
+          Exit
+        </Button> */}
       </div>
 
       <h1 className="title">Exam Report</h1>

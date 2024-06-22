@@ -8,7 +8,7 @@ Timer.propTypes = {
 };
 
 function Timer({ numOfQuestions, difficultyLevel }) {
-  console.log("Timer Render");
+  //   console.log("Timer Render");
   const [testTime, setTestTime] = useState(function () {
     let tt = numOfQuestions;
     if (difficultyLevel === "Easy") return tt * 45;
