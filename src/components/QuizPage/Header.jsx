@@ -7,12 +7,13 @@ Header.propTypes = {
   subjects: PropTypes.array,
   numQues: PropTypes.number,
   lvl: PropTypes.string,
-  children: PropTypes.any,
 };
 
-function Header({ subjects, name, subject, numQues, lvl, children }) {
+function Header({ subjects, name, subject, numQues, lvl }) {
+  console.log("⚡⚡Header Render");
   const Toggler = useRef(null);
   const Details = useRef(null);
+
   return (
     <div className="header">
       <div className="detail" ref={Details}>
@@ -29,8 +30,6 @@ function Header({ subjects, name, subject, numQues, lvl, children }) {
           <i className="fa-solid fa-chevron-right"></i> {lvl}
         </span>
       </div>
-
-      {children}
       <div
         className="toggler"
         ref={Toggler}

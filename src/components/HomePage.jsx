@@ -1,9 +1,8 @@
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
-import Button from "./Utility/Button";
 
-const d = new Date();
-let year = d.getFullYear();
+import Button from "./Utility/Button";
+import getCurrentyear from "./Utility/getCurrentyear";
 
 HomePage.propTypes = {
   dispatch: PropTypes.func,
@@ -22,7 +21,7 @@ function HomePage({
   numOfQuestions,
   difficultyLevel,
 }) {
-  console.log("Homepage render");
+  console.log("⚡⚡⚡Homepage render");
 
   return (
     <div className="Box">
@@ -30,6 +29,7 @@ function HomePage({
         <h1>
           <span>Welcome,</span> <span>Start Practice!</span>
         </h1>
+
         <input
           type="text"
           placeholder="Candidate Name"
@@ -38,6 +38,7 @@ function HomePage({
             dispatch({ type: "candidateNameChange", payload: ev.target.value })
           }
         />
+
         <div className="selectBox">
           <label>Subject Name</label>
           <select
@@ -56,10 +57,12 @@ function HomePage({
             ))}
           </select>
         </div>
+
         <NavLink to="Customize">
           <Button type="filled">Next</Button>
         </NavLink>
-        <p>ExamPrep © {year} | All rights reserved</p>
+
+        <p>ExamPrep © {getCurrentyear()} | All rights reserved</p>
       </div>
     </div>
   );

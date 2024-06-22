@@ -1,15 +1,17 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
-import { defaults } from "chart.js/auto";
-import Button from "../Utility/Button";
 import { NavLink } from "react-router-dom";
+import { defaults } from "chart.js/auto";
 import ChartComponent from "./ChartComponent";
+
 import { quizData } from "../../../data/quizData";
+import Button from "../Utility/Button";
 
 // const BASE_URL = "http://localhost:8000";
 
 const SortByOpts = ["All", "Correct", "Incorrect", "Skipped"];
 
+// ChartJS Chart Adaptiveness
 defaults.maintainAspectRatio = false;
 defaults.responsive = true;
 
@@ -30,10 +32,13 @@ function ReportPage({
   difficultyLevel,
   subjects,
 }) {
+  console.log("⚡⚡⚡Report page render");
+
   const [quesData, setQuesData] = useState([]);
   const [sortBy, setSortBy] = useState("Default");
   const [viewType, setViewType] = useState("Doughnut");
 
+  // Set question data according to subject
   useEffect(
     function () {
       // async function _fetchdata() {
@@ -60,8 +65,8 @@ function ReportPage({
     [subject]
   );
 
+  // Evalueation of choosen answers
   let evalueatedArr = [];
-
   for (let i = 0; i < numOfQuestions; i++) {
     if (choosedOptionsArr && quesData[i]) {
       if (
@@ -82,7 +87,7 @@ function ReportPage({
       }
     }
   }
-
+  // Conclusion of evalueation
   let skippedQues = 0;
   let correctQues = 0;
   let inCorrectQues = 0;
@@ -95,6 +100,7 @@ function ReportPage({
     }
   }
 
+  // Get color code of ith question
   const copyOfEvlArr = evalueatedArr;
   function getClassName(i) {
     if (!copyOfEvlArr) return "";
@@ -124,7 +130,8 @@ function ReportPage({
     );
     return "correctt";
   }
-  console.log("evalueated array", evalueatedArr);
+
+  // Set evaluated array according to sortBy
   if (sortBy === "Correct")
     evalueatedArr = evalueatedArr.filter(
       (opt, ind) => opt.choosed === opt.correctAns
@@ -138,8 +145,8 @@ function ReportPage({
     evalueatedArr = evalueatedArr.filter(
       (opt, ind) => opt.choosed === "Skipped273"
     );
-  console.log("sortedArr by", sortBy, evalueatedArr);
 
+  // Calculate test accuracy
   const accuracyPerc =
     correctQues === inCorrectQues
       ? 0

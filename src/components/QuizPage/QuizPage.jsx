@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
+
+import { quizData } from "../../../data/quizData";
 import Header from "./Header";
 import Question from "./Question";
 import Summary from "./Summary";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { quizData } from "../../../data/quizData";
 
 QuizPage.propTypes = {
   dispatch: PropTypes.func,
@@ -29,15 +29,12 @@ function QuizPage({
   choosedOptionsArr,
   BookmarkedArr,
 }) {
+  console.log("⚡⚡⚡QuizPage render");
+
   const [quesData, setQuesData] = useState([]);
   const [activeQues, setActiveQues] = useState(0);
-  const [testTime, setTestTime] = useState(function () {
-    let tt = numOfQuestions;
-    if (difficultyLevel === "Easy") return (tt *= 45);
-    if (difficultyLevel === "Medium") return (tt *= 30);
-    return (tt *= 20);
-  });
 
+  // Set Questions according to subject
   useEffect(
     function () {
       // async function _fetchdata() {
@@ -63,26 +60,7 @@ function QuizPage({
     },
     [subject]
   );
-  const navigate = useNavigate();
-  useEffect(
-    function () {
-      const TimeItrvlID = setInterval(function () {
-        if (testTime === 0) {
-          clearInterval(TimeItrvlID);
-          navigate("/Report");
-          return;
-        }
-        setTestTime(testTime - 1);
-      }, 1000);
 
-      return function () {
-        clearInterval(TimeItrvlID);
-      };
-    },
-    [testTime, navigate]
-  );
-
-  // console.log("QuizPage render");
   return (
     <div className="quiz">
       <Header
@@ -107,7 +85,9 @@ function QuizPage({
           BookmarkedArr={BookmarkedArr}
           activeQues={activeQues}
           setActiveQues={setActiveQues}
-          testTime={testTime}
+          numOfQuestions={numOfQuestions}
+          difficultyLevel={difficultyLevel}
+          // testTime={testTime}
         />
       </div>
     </div>

@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
-import Button from "../Utility/Button";
 import PropTypes from "prop-types";
+
+import Button from "../Utility/Button";
+import Timer from "../Utility/Timer";
 
 const quesStatusArr = [
   { stat: "Not Visited", className: "notVisited" },
@@ -15,6 +17,8 @@ Summary.propTypes = {
   activeQues: PropTypes.number,
   setActiveQues: PropTypes.func,
   testTime: PropTypes.number,
+  numOfQuestions: PropTypes.number,
+  difficultyLevel: PropTypes.string,
 };
 
 function Summary({
@@ -22,23 +26,23 @@ function Summary({
   BookmarkedArr,
   activeQues,
   setActiveQues,
-  testTime,
+  numOfQuestions,
+  difficultyLevel,
 }) {
-  // const numOfQues = choosedOptionsArr.length();
-  const minLeft = Math.floor(testTime / 60);
-  const secLeft = testTime % 60;
+  console.log("⚡⚡Summary render");
   return (
     <div className="summary">
       <div className="submit">
         <NavLink to="/Report">
           <Button type="filled">Submit Test</Button>
         </NavLink>
-        <span>
-          {minLeft < 10 && "0"}
-          {minLeft} : {secLeft < 10 && "0"}
-          {secLeft}
-        </span>
+
+        <Timer
+          numOfQuestions={numOfQuestions}
+          difficultyLevel={difficultyLevel}
+        />
       </div>
+
       <div className="quesWindow">
         {choosedOptionsArr?.map((elem, index) => (
           <h3
@@ -55,6 +59,7 @@ function Summary({
           </h3>
         ))}
       </div>
+
       <div className="quesStatusNote">
         {quesStatusArr.map((option, i) => (
           <div key={i} className="quesStatusItem">

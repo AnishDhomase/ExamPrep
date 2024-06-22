@@ -1,10 +1,13 @@
 import { useReducer } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 import HomePage from "./HomePage";
 import CustomizePage from "./CustomizePage";
 import QuizPage from "./QuizPage/QuizPage";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import PageNotFound from "./PageNotFound";
 import ReportPage from "./ReportPage/ReportPage";
+
+const subjects = ["Science", "Geography", "History", "React", "Javascript"];
 
 const initialState = {
   subject: 0,
@@ -14,8 +17,6 @@ const initialState = {
   choosedOptionsArr: Array.from(Array(10)),
   BookmarkedArr: new Array(10).fill("notBooked"),
 };
-
-const subjects = ["Science", "Geography", "History", "React", "Javascript"];
 
 function reducer(state, action) {
   switch (action.type) {
@@ -59,7 +60,8 @@ function reducer(state, action) {
 }
 
 function App() {
-  console.log("App render");
+  console.log("⚡⚡⚡⚡App render");
+
   const [
     {
       subject,
@@ -71,6 +73,7 @@ function App() {
     },
     dispatch,
   ] = useReducer(reducer, initialState);
+
   return (
     <div className="app">
       <BrowserRouter>
@@ -88,7 +91,6 @@ function App() {
               />
             }
           />
-
           <Route
             path="Customize"
             element={
@@ -102,7 +104,6 @@ function App() {
               />
             }
           />
-
           <Route
             path="Quiz"
             element={
@@ -117,8 +118,7 @@ function App() {
                 BookmarkedArr={BookmarkedArr}
               />
             }
-          ></Route>
-
+          />
           <Route
             path="Report"
             element={
@@ -131,8 +131,8 @@ function App() {
                 subjects={subjects}
               />
             }
-          ></Route>
-          <Route path="*" element={<PageNotFound />}></Route>
+          />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
     </div>

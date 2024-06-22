@@ -24,20 +24,10 @@ function Question({
   choosedOptionsArr,
   BookmarkedArr,
 }) {
-  const quesDescription = quesData[activeQues]?.question;
-  const quesOptions = quesData[activeQues]?.options;
-
-  const percentageQuesPosition = Math.ceil(
-    ((activeQues + 1) / totalQues) * 100
-  );
-  const percentageQuesPositionStr = percentageQuesPosition + "%";
-
-  function speak() {
-    speech.text = quesDescription;
-    window.speechSynthesis.speak(speech);
-  }
+  console.log("⚡⚡Question Render");
 
   // TODO: useEffect dependency eslint
+  // Choose Option
   useEffect(
     function () {
       if (
@@ -53,12 +43,26 @@ function Question({
     [activeQues, dispatch]
   );
 
+  const quesDescription = quesData[activeQues]?.question;
+  const quesOptions = quesData[activeQues]?.options;
+  const percentageQuesPosition = Math.ceil(
+    ((activeQues + 1) / totalQues) * 100
+  );
+  const percentageQuesPositionStr = percentageQuesPosition + "%";
+
+  // Text to Voice
+  function speak() {
+    speech.text = quesDescription;
+    window.speechSynthesis.speak(speech);
+  }
+
   return (
     <div className="question">
       <div className="quesStatus">
         <h3>
           Question {activeQues + 1} of {totalQues}
         </h3>
+
         <div className="progressBar">
           <div
             className="val"
@@ -103,6 +107,7 @@ function Question({
             <i className="fa-solid fa-chevron-left"></i>
           </Button>
         )}
+
         <Button
           onBtnClick={() =>
             dispatch({ type: "bookmarkQues", payload: activeQues })
@@ -114,6 +119,7 @@ function Question({
             } fa-bookmark`}
           ></i>
         </Button>
+
         {activeQues !== totalQues - 1 && (
           <Button
             type="filled"

@@ -1,12 +1,11 @@
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
+
 import Button from "./Utility/Button";
+import getCurrentyear from "./Utility/getCurrentyear";
 
 const NumOfQuestionsOptions = [10, 15, 20];
 const DifficultyLevelOptions = ["Easy", "Medium", "Hard"];
-
-const d = new Date();
-let year = d.getFullYear();
 
 CustomizePage.propTypes = {
   dispatch: PropTypes.func,
@@ -25,12 +24,14 @@ function CustomizePage({
   candidateName,
   subjects,
 }) {
+  console.log("⚡⚡⚡CustomizePage Render");
   return (
     <div className="Box">
       <div className="BoxInnner customQuiz">
         <h1>
-          <span>Now,</span> <span>Customize Quiz</span>
+          <span>Now,</span> <span>Customize Test</span>
         </h1>
+
         <div className="selectBox">
           <label>No. of Questions</label>
           <select
@@ -78,7 +79,7 @@ function CustomizePage({
           </NavLink>
         </div>
 
-        <p>ExamPrep © {year} | All rights reserved</p>
+        <p>ExamPrep © {getCurrentyear()} | All rights reserved</p>
       </div>
     </div>
   );

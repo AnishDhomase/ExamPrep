@@ -1,6 +1,6 @@
 import { Bar, Doughnut } from "react-chartjs-2";
-
 import PropTypes from "prop-types";
+
 import Button from "../Utility/Button";
 
 ChartComponent.propTypes = {
@@ -18,6 +18,7 @@ export default function ChartComponent({
   skippedQues,
   setViewType,
 }) {
+  console.log("⚡⚡ChartComponent Render");
   return (
     <div className="chart">
       <div className="chartgraph">
