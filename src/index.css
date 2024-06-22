@@ -388,7 +388,8 @@ li {
   background-color: rgb(253, 60, 60);
 }
 .quiz .quesBox .summary .quesStatus.active {
-  border: 1px solid white;
+  border: 1px solid black;
+  color: rgb(56, 47, 47);
 }
 .quiz .quesBox .summary .quesWindow .quesStatus:hover {
   scale: 1.1;

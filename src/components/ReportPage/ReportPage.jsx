@@ -22,6 +22,7 @@ ReportPage.propTypes = {
   difficultyLevel: PropTypes.string,
   choosedOptionsArr: PropTypes.array,
   subjects: PropTypes.array,
+  dispatch: PropTypes.func,
 };
 
 function ReportPage({
@@ -31,6 +32,7 @@ function ReportPage({
   numOfQuestions,
   difficultyLevel,
   subjects,
+  dispatch,
 }) {
   // console.log("⚡⚡⚡Report page render");
 
@@ -138,7 +140,9 @@ function ReportPage({
     <div className="report">
       <div className="reportNav">
         <NavLink to="/">
-          <Button>New Test</Button>
+          <Button onBtnClick={() => dispatch({ type: "newTest" })}>
+            New Test
+          </Button>
         </NavLink>
         {/* <Button type="filled" onBtnClick={closeTab}>
           Exit

@@ -55,6 +55,8 @@ function reducer(state, action) {
             : op
         ),
       };
+    case "newTest":
+      return initialState;
     default:
   }
 }
@@ -129,6 +131,7 @@ function App() {
                 numOfQuestions={numOfQuestions}
                 difficultyLevel={difficultyLevel}
                 subjects={subjects}
+                dispatch={dispatch}
               />
             }
           />
