@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
+import { motion } from "framer-motion";
 
 import Button from "../Utility/Button";
 import Timer from "../Utility/Timer";
@@ -31,7 +32,12 @@ function Summary({
 }) {
   // console.log("⚡⚡Summary render");
   return (
-    <div className="summary">
+    <motion.div
+      className="summary"
+      initial={window.innerWidth > 774 && { x: "150vw" }}
+      animate={window.innerWidth > 774 && { x: 0 }}
+      transition={window.innerWidth > 774 && { duration: 1.5 }}
+    >
       <div className="submit">
         <NavLink to="/Report">
           <Button type="filled">Submit Test</Button>
@@ -68,7 +74,7 @@ function Summary({
           </div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 }
 

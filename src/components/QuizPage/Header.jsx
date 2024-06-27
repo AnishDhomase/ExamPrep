@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { useRef } from "react";
+import { motion } from "framer-motion";
 
 Header.propTypes = {
   name: PropTypes.string,
@@ -15,8 +16,13 @@ function Header({ subjects, name, subject, numQues, lvl }) {
   const Details = useRef(null);
 
   return (
-    <div className="header">
-      <div className="detail" ref={Details}>
+    <motion.div
+      className="header"
+      initial={window.innerWidth > 774 && { y: "-10vh" }}
+      animate={window.innerWidth > 774 && { y: 0 }}
+      transition={window.innerWidth > 774 && { duration: 1 }}
+    >
+      <motion.div className="detail" ref={Details}>
         <span>
           <b>Subject </b>
           <i className="fa-solid fa-chevron-right"></i> {subjects[subject]}
@@ -29,14 +35,20 @@ function Header({ subjects, name, subject, numQues, lvl }) {
           <b>Level </b>
           <i className="fa-solid fa-chevron-right"></i> {lvl}
         </span>
-      </div>
-      <div
+      </motion.div>
+      <motion.div
         className="toggler"
         ref={Toggler}
         onClick={() => Details.current.classList.toggle("active")}
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        exit={{ scale: 0 }}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95, rotate: "12deg" }}
+        transition={{ duration: 0.2 }}
       >
         <i className="fa-solid fa-ellipsis"></i>
-      </div>
+      </motion.div>
 
       <div className="user">
         <span>
@@ -44,7 +56,7 @@ function Header({ subjects, name, subject, numQues, lvl }) {
         </span>
         <span className="userName">{name || "Guest"}</span>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

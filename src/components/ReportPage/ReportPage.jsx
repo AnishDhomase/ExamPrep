@@ -1,8 +1,15 @@
 import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { defaults } from "chart.js/auto";
 import ChartComponent from "./ChartComponent";
+import {
+  useScroll,
+  motion,
+  useSpring,
+  useTransform,
+  useInView,
+} from "framer-motion";
 
 import { quizData } from "../../../data/quizData";
 import Button from "../Utility/Button";
@@ -39,6 +46,13 @@ function ReportPage({
   const [quesData, setQuesData] = useState([]);
   const [sortBy, setSortBy] = useState("Default");
   const [viewType, setViewType] = useState("Doughnut");
+
+  const ref1 = useRef(null);
+  const isInView1 = useInView(ref1, { once: true });
+  const ref2 = useRef(null);
+  const isInView2 = useInView(ref2, { once: true });
+  const ref3 = useRef(null);
+  const isInView3 = useInView(ref3, { once: true });
 
   // Set question data according to subject
   useEffect(
@@ -136,8 +150,25 @@ function ReportPage({
       ? 0
       : Math.ceil((correctQues / (correctQues + inCorrectQues)) * 100);
 
+  const { scrollYProgress } = useScroll();
+
+  const scaleX = useSpring(scrollYProgress);
+
+  const background = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ["rgb(86, 1, 245)", "rgb(1, 245, 13)"]
+  );
+
   return (
     <div className="report">
+      <motion.div
+        className="pageScrollProgress"
+        style={{
+          scaleX,
+          background,
+        }}
+      />
       <div className="reportNav">
         <NavLink to="/">
           <Button onBtnClick={() => dispatch({ type: "newTest" })}>
@@ -149,7 +180,16 @@ function ReportPage({
         </Button> */}
       </div>
 
-      <h1 className="title">Exam Report</h1>
+      <motion.h1
+        ref={ref1}
+        className="title"
+        style={{
+          x: isInView1 ? 0 : -20,
+          transition: "1s all",
+        }}
+      >
+        Exam Report
+      </motion.h1>
 
       <ChartComponent
         viewType={viewType}
@@ -159,7 +199,16 @@ function ReportPage({
         setViewType={setViewType}
       />
 
-      <h1 className="title">Score Card</h1>
+      <motion.h1
+        ref={ref2}
+        className="title"
+        style={{
+          x: isInView2 ? 0 : -20,
+          transition: "1s all",
+        }}
+      >
+        Score Card
+      </motion.h1>
 
       <div className="scoreCard">
         <div className="scoreInner">
@@ -182,7 +231,16 @@ function ReportPage({
         <h2 className="acc">Accuracy {accuracyPerc}%</h2>
       </div>
 
-      <h1 className="title">Question Overview</h1>
+      <motion.h1
+        ref={ref3}
+        className="title"
+        style={{
+          x: isInView3 ? 0 : -20,
+          transition: "1s all",
+        }}
+      >
+        Question Overview
+      </motion.h1>
 
       <div className="tableBox">
         <div className="sort">

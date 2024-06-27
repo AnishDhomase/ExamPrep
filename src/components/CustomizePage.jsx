@@ -1,8 +1,11 @@
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
+import { motion } from "framer-motion";
 
 import Button from "./Utility/Button";
 import getCurrentyear from "./Utility/getCurrentyear";
+import { grow } from "./Utility/animations/grow";
+import { colorGreen } from "./Utility/animations/colorGreen";
 
 const NumOfQuestionsOptions = [10, 15, 20];
 const DifficultyLevelOptions = ["Easy", "Medium", "Hard"];
@@ -27,9 +30,21 @@ function CustomizePage({
   // console.log("⚡⚡⚡CustomizePage Render");
   return (
     <div className="Box">
-      <div className="BoxInnner customQuiz">
+      <motion.div
+        className="BoxInnner customQuiz"
+        initial={grow.initial}
+        animate={grow.animate}
+        exit={grow.exit}
+        transition={grow.transition}
+      >
         <h1>
-          <span>Now,</span> <span>Customize Test</span>
+          <span>Now,</span>{" "}
+          <motion.span
+            animate={colorGreen.animate}
+            transition={colorGreen.transition}
+          >
+            Customize Test
+          </motion.span>
         </h1>
 
         <div className="selectBox">
@@ -80,7 +95,7 @@ function CustomizePage({
         </div>
 
         <p>ExamPrep © {getCurrentyear()} | All rights reserved</p>
-      </div>
+      </motion.div>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { motion } from "framer-motion";
 import Button from "../Utility/Button";
 
 import PropTypes from "prop-types";
@@ -48,6 +49,7 @@ function Question({
   const percentageQuesPosition = Math.ceil(
     ((activeQues + 1) / totalQues) * 100
   );
+
   const percentageQuesPositionStr = percentageQuesPosition + "%";
 
   // Text to Voice
@@ -57,23 +59,36 @@ function Question({
   }
 
   return (
-    <div className="question">
+    <motion.div
+      className="question"
+      initial={window.innerWidth > 774 && { x: "-120vw" }}
+      animate={window.innerWidth > 774 && { x: 0 }}
+      transition={window.innerWidth > 774 && { duration: 1 }}
+    >
       <div className="quesStatus">
         <h3>
           Question {activeQues + 1} of {totalQues}
         </h3>
 
         <div className="progressBar">
-          <div
+          <motion.div
             className="val"
-            style={{ width: percentageQuesPositionStr }}
-          ></div>
+            initial={{ width: percentageQuesPositionStr }}
+            animate={{ width: percentageQuesPositionStr }}
+            transition={{ duration: 1, ease: "backInOut" }}
+            // style={{ width: percentageQuesPositionStr }}
+          ></motion.div>
         </div>
       </div>
 
       <div className="quesDesc">
         <h3>{quesDescription}</h3>
-        <i className="fa-solid fa-volume-high" onClick={speak}></i>
+        <motion.i
+          className="fa-solid fa-volume-high"
+          onClick={speak}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95, rotate: "5deg" }}
+        ></motion.i>
       </div>
 
       <ul className="options">
@@ -129,7 +144,7 @@ function Question({
           </Button>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }
 

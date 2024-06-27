@@ -50,6 +50,8 @@ body {
   color: rgb(47, 64, 215) !important;
   opacity: 0.8;
   margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
 }
 .home .btn {
   width: 100%;
@@ -58,6 +60,10 @@ body {
 .BoxInnner p {
   font-size: 12px;
   margin-top: 20px;
+}
+.BoxInnner span:nth-child(2) {
+  display: inline-block;
+  overflow-x: hidden;
 }
 @media screen and (max-width: 560px) {
   .BoxInnner {
@@ -120,13 +126,16 @@ body {
   position: relative;
 }
 .quiz .header .detail {
+  position: relative;
   display: flex;
   justify-content: center;
   gap: 30px;
+  z-index: 10000;
 }
 .quiz .header .detail.active {
   display: block;
   display: flex;
+  z-index: 10000 !important;
 }
 .header .detail span {
   display: flex;
@@ -157,6 +166,7 @@ body {
   border-radius: 50px;
   display: none;
   color: white;
+  cursor: pointer;
 }
 @media screen and (max-width: 774px) {
   .quiz .header {
@@ -176,10 +186,10 @@ body {
     justify-content: center;
     align-items: center;
 
-    position: absolute;
+    position: absolute !important;
     top: 60px;
     display: none;
-    z-index: 100;
+    z-index: 10000;
 
     gap: 0px;
   }
@@ -196,14 +206,15 @@ body {
     display: none;
   }
   .quiz .quesBox .summary .submit {
-    position: fixed;
-    top: 0;
+    /* position: fixed !important; */
+    top: 0 !important;
     right: 0;
 
     font-size: 15px;
     background-color: rgba(192, 193, 222, 0.682);
     padding: 13px;
-    border-radius: 50px 0 0 50px;
+    /* border-radius: 50px 0 0 50px; */
+    border-radius: 50px;
 
     z-index: 1111;
   }
@@ -556,6 +567,15 @@ li {
   gap: 30px;
   justify-content: center;
 }
+.report .pageScrollProgress {
+  transform-origin: center;
+  position: fixed;
+  top: 2px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  opacity: 0.95;
+}
 .report .reportNav {
   display: flex;
   justify-content: space-between;
@@ -763,6 +783,7 @@ input {
   font-size: 18px;
   width: 100%;
   color: rgb(47, 64, 215);
+
   background-color: #edeff1;
 }
 input::placeholder {
