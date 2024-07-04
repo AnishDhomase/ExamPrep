@@ -2,16 +2,9 @@ import { Bar, Doughnut } from "react-chartjs-2";
 import PropTypes from "prop-types";
 
 import Button from "../Utility/Button";
+import { memo } from "react";
 
-ChartComponent.propTypes = {
-  viewType: PropTypes.string,
-  correctQues: PropTypes.number,
-  inCorrectQues: PropTypes.number,
-  skippedQues: PropTypes.number,
-  setViewType: PropTypes.func,
-};
-
-export default function ChartComponent({
+const ChartComponent = memo(function ChartComponent({
   viewType,
   correctQues,
   inCorrectQues,
@@ -70,4 +63,14 @@ export default function ChartComponent({
       </Button>
     </div>
   );
-}
+});
+
+ChartComponent.propTypes = {
+  viewType: PropTypes.string,
+  correctQues: PropTypes.number,
+  inCorrectQues: PropTypes.number,
+  skippedQues: PropTypes.number,
+  setViewType: PropTypes.func,
+};
+
+export default ChartComponent;

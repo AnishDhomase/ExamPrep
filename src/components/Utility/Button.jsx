@@ -7,11 +7,19 @@ Button.propTypes = {
   onBtnClick: PropTypes.func,
 };
 
-export default function Button({ children, type = "unfilled", onBtnClick }) {
+export default function Button({
+  children,
+  type = "unfilled",
+  onBtnClick = () => {},
+}) {
+  // function handleBtnClick() {
+  //   onBtnClick();
+  // }
+
   return (
     <AnimatePresence mode="popLayout">
       <motion.button
-        onClick={onBtnClick}
+        onClick={() => onBtnClick()}
         className={`btn ${type}`}
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}

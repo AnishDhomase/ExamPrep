@@ -1,16 +1,8 @@
 import PropTypes from "prop-types";
-import { useRef } from "react";
+import { memo, useRef } from "react";
 import { motion } from "framer-motion";
 
-Header.propTypes = {
-  name: PropTypes.string,
-  subject: PropTypes.number,
-  subjects: PropTypes.array,
-  numQues: PropTypes.number,
-  lvl: PropTypes.string,
-};
-
-function Header({ subjects, name, subject, numQues, lvl }) {
+const Header = memo(function Header({ subjects, name, subject, numQues, lvl }) {
   // console.log("⚡⚡Header Render");
   const Toggler = useRef(null);
   const Details = useRef(null);
@@ -58,6 +50,14 @@ function Header({ subjects, name, subject, numQues, lvl }) {
       </div>
     </motion.div>
   );
-}
+});
+
+Header.propTypes = {
+  name: PropTypes.string,
+  subject: PropTypes.number,
+  subjects: PropTypes.array,
+  numQues: PropTypes.number,
+  lvl: PropTypes.string,
+};
 
 export default Header;

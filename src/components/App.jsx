@@ -1,11 +1,13 @@
-import { useReducer } from "react";
+import { lazy, Suspense, useReducer } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import PageLoader from "./Utility/PageLoader";
 
-import HomePage from "./HomePage";
-import CustomizePage from "./CustomizePage";
-import QuizPage from "./QuizPage/QuizPage";
-import PageNotFound from "./PageNotFound";
-import ReportPage from "./ReportPage/ReportPage";
+// import HomePage from "./HomePage";
+const HomePage = lazy(() => import("./HomePage"));
+const CustomizePage = lazy(() => import("./CustomizePage"));
+const QuizPage = lazy(() => import("./QuizPage/QuizPage"));
+const ReportPage = lazy(() => import("./ReportPage/ReportPage"));
+const PageNotFound = lazy(() => import("./PageNotFound"));
 
 const subjects = ["Science", "Geography", "History", "React", "Javascript"];
 
@@ -63,6 +65,19 @@ function reducer(state, action) {
 
 function App() {
   // console.log("⚡⚡⚡⚡App render");
+  // const [isWindowLoaded, setIsWindowLoaded] = useState(false);
+  // useEffect(
+  //   function () {
+  //     window.addEventListener("load", function () {
+  //       setIsWindowLoaded(!isWindowLoaded);
+  //       console.log("loaded!");
+  //     });
+  //     return () => {
+  //       window.removeEventListener("load");
+  //     };
+  //   },
+  //   [isWindowLoaded]
+  // );
 
   const [
     {
@@ -77,68 +92,70 @@ function App() {
   ] = useReducer(reducer, initialState);
 
   return (
-    <div className="app">
-      <BrowserRouter>
-        <Routes>
-          <Route
-            index
-            element={
-              <HomePage
-                dispatch={dispatch}
-                subject={subject}
-                candidateName={candidateName}
-                subjects={subjects}
-                numOfQuestions={numOfQuestions}
-                difficultyLevel={difficultyLevel}
-              />
-            }
-          />
-          <Route
-            path="Customize"
-            element={
-              <CustomizePage
-                dispatch={dispatch}
-                numOfQuestions={numOfQuestions}
-                difficultyLevel={difficultyLevel}
-                subject={subject}
-                candidateName={candidateName}
-                subjects={subjects}
-              />
-            }
-          />
-          <Route
-            path="Quiz"
-            element={
-              <QuizPage
-                dispatch={dispatch}
-                subject={subject}
-                candidateName={candidateName}
-                numOfQuestions={numOfQuestions}
-                difficultyLevel={difficultyLevel}
-                subjects={subjects}
-                choosedOptionsArr={choosedOptionsArr}
-                BookmarkedArr={BookmarkedArr}
-              />
-            }
-          />
-          <Route
-            path="Report"
-            element={
-              <ReportPage
-                choosedOptionsArr={choosedOptionsArr}
-                subject={subject}
-                candidateName={candidateName}
-                numOfQuestions={numOfQuestions}
-                difficultyLevel={difficultyLevel}
-                subjects={subjects}
-                dispatch={dispatch}
-              />
-            }
-          />
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <Suspense fallback={<PageLoader />}>
+      <div className="app">
+        <BrowserRouter>
+          <Routes>
+            <Route
+              index
+              element={
+                <HomePage
+                  dispatch={dispatch}
+                  subject={subject}
+                  candidateName={candidateName}
+                  subjects={subjects}
+                  numOfQuestions={numOfQuestions}
+                  difficultyLevel={difficultyLevel}
+                />
+              }
+            />
+            <Route
+              path="Customize"
+              element={
+                <CustomizePage
+                  dispatch={dispatch}
+                  numOfQuestions={numOfQuestions}
+                  difficultyLevel={difficultyLevel}
+                  subject={subject}
+                  candidateName={candidateName}
+                  subjects={subjects}
+                />
+              }
+            />
+            <Route
+              path="Quiz"
+              element={
+                <QuizPage
+                  dispatch={dispatch}
+                  subject={subject}
+                  candidateName={candidateName}
+                  numOfQuestions={numOfQuestions}
+                  difficultyLevel={difficultyLevel}
+                  subjects={subjects}
+                  choosedOptionsArr={choosedOptionsArr}
+                  BookmarkedArr={BookmarkedArr}
+                />
+              }
+            />
+            <Route
+              path="Report"
+              element={
+                <ReportPage
+                  choosedOptionsArr={choosedOptionsArr}
+                  subject={subject}
+                  candidateName={candidateName}
+                  numOfQuestions={numOfQuestions}
+                  difficultyLevel={difficultyLevel}
+                  subjects={subjects}
+                  dispatch={dispatch}
+                />
+              }
+            />
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </Suspense>
   );
 }
 
